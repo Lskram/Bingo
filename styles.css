@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&display=swap');
+
+body {
+    font-family: 'Kanit', sans-serif;
+    background: linear-gradient(135deg, #ffd8d8 0%, #ffe7d3 100%);
+    min-height: 100vh;
+}
+
+.game-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.title-container {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ffc107 100%);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.2);
+}
+
+.guild-tag {
+    background: linear-gradient(135deg, #ffd8d8 0%, #ffe7d3 100%);
+    padding: 8px 16px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-top: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.status-container {
+    background: linear-gradient(135deg, #ebf4ff 0%, #e6fffa 100%);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.bingo-cell {
+    width: 70px;
+    height: 70px;
+    margin: 5px;
+    border: 3px solid #eee;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 20px;
+    font-weight: bold;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.bingo-cell .number {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    font-size: 12px;
+    color: #666;
+}
+
+.bingo-cell .mark {
+    font-size: 24px;
+}
+
+.bingo-cell:hover:not(.marked) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    border-color: #ffc107;
+}
+
+.bingo-cell.marked {
+    background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
+    color: white;
+    border-color: transparent;
+    animation: pulse 1s;
+}
+
+.bingo-cell.marked .number {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.bingo-cell.suggested {
+    border-color: #48bb78;
+    border-width: 3px;
+    animation: bounce 2s infinite;
+}
+
+.button {
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.button-primary {
+    background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
+    color: white;
+}
+
+.button-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(66, 153, 225, 0.3);
+}
+
+.button-secondary {
+    background: linear-gradient(135deg, #48bb78 0%, #38b2ac 100%);
+    color: white;
+}
+
+.button-secondary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(72, 187, 120, 0.3);
+}
+
+.button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Note styles */
+.note-button {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: linear-gradient(135deg, #f6e05e 0%, #faf089 100%);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #744210;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.note-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.notes-dialog {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.notes-dialog.show {
+    display: flex;
+}
+
+.notes-content {
+    background: white;
+    padding: 24px;
+    border-radius: 16px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    animation: slideDown 0.3s ease;
+}
+
+.notes-list {
+    margin-top: 16px;
+    padding-left: 20px;
+}
+
+.notes-list li {
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 8px;
+}
+
+.notes-list li::before {
+    content: "•";
+    position: absolute;
+    left: -12px;
+    color: #4299e1;
+}
+
+.close-button {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #666;
+    padding: 4px;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

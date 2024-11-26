@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingo in Cookie run tower of adventures 🛡️</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mx-auto px-4 py-8">
+        <div class="game-container max-w-3xl mx-auto p-8">
+            <div class="title-container text-center">
+                <h1 class="text-4xl font-bold text-white mb-2 animate__animated animate__bounceIn">
+                    Bingo in Cookie run tower of adventures 🛡️
+                </h1>
+                <div class="guild-tag">
+                    <span class="text-gray-700">จัดทำโดยกิลด์ : นางฟ้ารับส่วย</span>
+                </div>
+            </div>
+
+            <div class="status-container">
+                <div class="flex items-center justify-between">
+                    <p id="bingoCount" class="text-xl font-bold text-gray-800">จำนวนบิงโกที่ได้: 0</p>
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+                        <p id="suggestion" class="text-gray-600">เริ่มเกมโดยคลิกที่ช่องที่ต้องการ</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="board" class="flex flex-col items-center mb-8"></div>
+
+            <div class="flex justify-center gap-6">
+                <button id="undoButton" class="button button-primary" disabled>
+                    <span class="text-2xl">↩️</span>
+                    <span>ย้อนกลับ</span>
+                </button>
+                <button id="resetButton" class="button button-secondary">
+                    <span class="text-2xl">🔄</span>
+                    <span>รีเซ็ตเกม</span>
+                </button>
+            </div>
+
+            <button class="note-button" onclick="showNotes()">
+                📝 หมายเหตุ
+            </button>
+
+            <div id="notesDialog" class="notes-dialog">
+                <div class="notes-content">
+                    <button class="close-button" onclick="hideNotes()">×</button>
+                    <h2 class="text-xl font-bold mb-4">หมายเหตุ</h2>
+                    <ul class="notes-list">
+                        <li>จัดทำเพื่อช่วยเล่นบิงโกให้มากกว่า 3 ขึ้นไป</li>
+                        <li>ลดข้อผิดพลาด Human Error</li>
+                        <li>ช่วยคนที่ไม่เก่งบิงโก</li>
+                        <li>เก่งแล้วก็ไม่ต้องเล่น งดดราม่า</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
